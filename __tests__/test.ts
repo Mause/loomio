@@ -1,14 +1,5 @@
+import comp from "../index";
 
-
-import comp from '../index';	
-
-it('boop', async () => {
-
-await	comp.run();	
-
-
-})
-
-
-
-
+it("boop", async () => {
+  await comp.run();
+});
