@@ -9,7 +9,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "0.21.2",
     "@pipedream/pipedream": "^0.3.3",
     "@pipedream/platform": "^0.10.0",
     "ironpipe": "^0.0.8",
