@@ -1,0 +1,23 @@
+{
+  "name": "loomio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Elliana May <me@mause.me>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+     "test": "jest",
+     "build": "tsc"
+  },
+  "dependencies": {
+    "@pipedream/pipedream": "^0.3.3",
+    "@pipedream/platform": "^0.10.0",
+    "ironpipe": "^0.0.8",
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "ts-jest": "^27.1.4"
+  }
+}
