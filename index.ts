@@ -24,6 +24,7 @@ export default defineComponent({
     },
   },
   async run({ $ }) {
+    const cookies = await this.getCookie($);
     try {
       await axios($, {
         method: "POST",
