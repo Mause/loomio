@@ -1,14 +1,16 @@
 import dotenv from "dotenv";
+import { createComponent } from "./create-component";
 
 import comp from "./index";
-import { createComponent } from "./src/create-component";
 
 const config = dotenv.config();
 
 async function main() {
+  const parsed = config.parsed!;
+
   const self = createComponent(comp, {
-    email: config.parsed!.EMAIL,
-    password: config.parsed!.PASSWORD,
+    email: parsed.EMAIL,
+    password: parsed.PASSWORD,
     title: "this is a test",
   });
 
@@ -16,5 +18,8 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().then(() => process.exit());
+  main().then(
+    () => process.exit(),
+    (error) => console.error(error)
+  );
 }

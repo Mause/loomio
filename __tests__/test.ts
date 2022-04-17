@@ -1,4 +1,4 @@
-import comp from "../index";
+import comp from "../src/index";
 import moxios from "moxios";
 import { createComponent } from "../src/create-component";
 
@@ -25,6 +25,7 @@ it("boop", async () => {
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const disc = await createComponent(comp, {
     email: "dummy@example.com",
     password: "password",
