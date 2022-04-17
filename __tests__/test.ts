@@ -1,6 +1,7 @@
-import comp from "../src/index";
 import moxios from "moxios";
-import { createComponent } from "../src/create-component";
+import LoomioApp from "../src/loomio.app";
+import comp from "../src/actions/create-discussion";
+import { createApp, createComponent } from "../src/create-component";
 
 const title = "this is a title";
 
@@ -25,12 +26,20 @@ it("boop", async () => {
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const disc = await createComponent(comp, {
+  const loomio = createApp(LoomioApp, {
     email: "dummy@example.com",
     password: "password",
+  });
+
+  const createDiscussion = createComponent(comp, {
+    loomio,
+    description: "this is a description",
+    group_id: 1,
     title,
-  }).run({ $: {} });
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const disc = await createDiscussion.run({ $: {} });
 
   expect(disc).toEqual({ title });
 });
