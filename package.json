@@ -5,7 +5,7 @@
   "author": "Elliana May <me@mause.me>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node orch.ts",
+    "start": "ts-node ./src/orch.ts",
     "test": "jest",
     "build": "tsc",
     "prepare": "husky install"
