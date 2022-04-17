@@ -2,6 +2,7 @@ import moxios from "moxios";
 import LoomioApp from "../src/loomio.app";
 import comp from "../src/actions/create-discussion";
 import { createApp, createComponent } from "../src/create-component";
+import { Discussion } from "../src/types";
 
 const title = "this is a title";
 
@@ -39,8 +40,7 @@ it("boop", async () => {
     title,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const disc = await createDiscussion.run({ $: {} });
+  const disc = (await createDiscussion.run({ $: {} })) as Discussion;
 
   expect(disc).toEqual({ title });
 });
