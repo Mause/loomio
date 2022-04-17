@@ -6,21 +6,27 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "axios": "0.19.2",
     "@pipedream/pipedream": "^0.3.3",
     "@pipedream/platform": "^0.10.0",
+    "axios": "0.19.2",
     "ironpipe": "^0.0.8",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/moxios": "^0.4.15",
+    "husky": ">=6",
     "jest": "^27.5.1",
+    "lint-staged": ">=10",
     "moxios": "^0.4.0",
     "prettier": "^2.6.2",
     "ts-jest": "^27.1.4"
+  },
+  "lint-staged": {
+    "*.{js,css,md,ts,json}": "prettier --write"
   }
 }
