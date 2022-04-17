@@ -9,9 +9,9 @@ async function main() {
   const parsed = config.parsed!;
 
   const loomio = createApp(LoomioApp, {
-    email: parsed["EMAIL"],
-    password: parsed["PASSWORD"],
-    group_id: parsed["GROUP_ID"],
+    email: parsed["EMAIL"]!,
+    password: parsed["PASSWORD"]!,
+    group_id: parseInt(parsed["GROUP_ID"]!, 10),
   });
 
   const createDiscussion = createComponent(CreateDiscussion, {
