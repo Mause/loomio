@@ -6,7 +6,7 @@ module.exports = {
     project: ["tsconfig.json"],
   },
   plugins: ["@typescript-eslint"],
-  ignorePatterns: [".eslintrc.js", "tsconfig.json"],
+  ignorePatterns: [".eslintrc.js"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",

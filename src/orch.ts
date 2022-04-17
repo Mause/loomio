@@ -11,6 +11,7 @@ async function main() {
   const loomio = createApp(LoomioApp, {
     email: parsed["EMAIL"],
     password: parsed["PASSWORD"],
+    group_id: parsed["GROUP_ID"],
   });
 
   const createDiscussion = createComponent(CreateDiscussion, {
@@ -18,7 +19,6 @@ async function main() {
     description: `# Describe
 
 > quote me at your peril`,
-    group_id: parsed["GROUP_ID"],
     title: "Title: Prof",
   });
 
