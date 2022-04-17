@@ -17,8 +17,8 @@ export default defineComponent({
     async getCookie() {
       const res = await axios.post("https://www.loomio.org/api/v1/sessions", {
         user: {
-          email: this.email ,
-          password: this.password ,
+          email: this.email,
+          password: this.password,
         },
       });
 
