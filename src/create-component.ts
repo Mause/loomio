@@ -2,11 +2,12 @@ import {
   ComponentInstance,
   ComponentOptions,
 } from "ironpipe/lib/component/component";
+import { ExtractPropTypes } from "ironpipe/lib/component/props";
 import { AppInstance, AppOptions } from "./defineApp";
 
 export function createApp<Comp extends AppOptions>(
   comp: Comp,
-  props: Record<keyof Comp["props"], unknown>
+  props: Readonly<ExtractPropTypes<Comp["props"]>>
 ): AppInstance {
   return Object.create(
     Object.assign(
@@ -31,7 +32,7 @@ export function createApp<Comp extends AppOptions>(
 
 export function createComponent<Comp extends ComponentOptions>(
   comp: Comp,
-  props: Record<keyof Comp["props"], unknown>
+  props: Readonly<ExtractPropTypes<Comp["props"]>>
 ): ComponentInstance {
   return Object.create(
     Object.assign(
