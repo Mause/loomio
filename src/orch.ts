@@ -16,9 +16,10 @@ async function main() {
 
   const createDiscussion = createComponent(CreateDiscussion, {
     loomio,
-    description: `# Describe
+    description_format: "html",
+    description: `<h1>Describe</h1>
 
-> quote me at your peril`,
+<blockquote>quote me at your peril</blockquote>`,
     title: "Title: Prof",
   });
 

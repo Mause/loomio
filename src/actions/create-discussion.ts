@@ -59,7 +59,8 @@ export default defineComponent({
   props: {
     loomio,
     title: { type: "string" },
-    description: { type: "text" },
+    description: { type: "string" },
+    description_format: { type: "string", options: ["md", "html"] },
   },
   methods: {},
   async run(): Promise<Discussion> {
@@ -73,7 +74,7 @@ export default defineComponent({
         discussion: {
           title: this.title,
           description: this.description,
-          description_format: "md",
+          description_format: this.description_format,
           group_id,
           newest_first: false,
           private: true,
