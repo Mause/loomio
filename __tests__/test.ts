@@ -28,13 +28,13 @@ it("boop", async () => {
 
   const loomio = createApp(LoomioApp, {
     email: "dummy@example.com",
+    group_id: 1,
     password: "password",
   });
 
   const createDiscussion = createComponent(comp, {
     loomio,
     description: "this is a description",
-    group_id: 1,
     title,
   });
 

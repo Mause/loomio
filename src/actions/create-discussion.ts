@@ -58,29 +58,32 @@ export default defineComponent({
   version: "0.0.1",
   props: {
     loomio,
-    group_id: { type: "number" },
     title: { type: "string" },
     description: { type: "text" },
   },
   methods: {},
   async run(): Promise<Discussion> {
-    const cookie = await (this.loomio as LoomioApp)!.getCookie();
-    const newLocal = await axios.post<ResponseShape>(
+    const loomio = (this.loomio as LoomioApp)!;
+    const cookie = await loomio.getCookie();
+    const group_id = loomio.getGroupId();
+
+    const res = await axios.post<ResponseShape>(
       "https://www.loomio.org/api/v1/discussions",
       {
         discussion: {
           title: this.title,
           description: this.description,
           description_format: "md",
-          group_id: this.group_id,
+          group_id,
           newest_first: false,
           private: true,
           notify_recipients: true,
-          recipient_audience: `group-${this.group_id as string}`,
+          recipient_audience: `group-${group_id}`,
         },
       },
       { headers: { cookie } }
     );
-    return newLocal.data.discussions[0]!;
+
+    return res.data.discussions[0]!;
   },
 });

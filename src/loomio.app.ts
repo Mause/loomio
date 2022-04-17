@@ -8,8 +8,12 @@ const LoomioAppDef = defineApp({
   props: {
     email: { type: "string" },
     password: { type: "string" },
+    group_id: { type: "integer" },
   },
   methods: {
+    getGroupId() {
+      return this.group_id;
+    },
     async getCookie() {
       const res = await axios.post("https://www.loomio.org/api/v1/sessions", {
         user: {
