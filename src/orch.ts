@@ -1,9 +1,14 @@
 import dotenv from "dotenv";
 import CreateDiscussion from "./actions/create-discussion";
+import CreatePoll from "./actions/create-poll";
 import { createApp, createComponent } from "./create-component";
 import LoomioApp from "./loomio.app";
+import { Discussion, Poll } from "./types";
+import { catchError } from "./utils";
 
 const config = dotenv.config();
+
+const title = "Title: Prof";
 
 async function main() {
   const parsed = config.parsed!;
@@ -20,17 +25,26 @@ async function main() {
     description: `<h1>Describe</h1>
 
 <blockquote>quote me at your peril</blockquote>`,
-    title: "Title: Prof",
+    title,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  const res = (await createDiscussion.run({ $: {} })) as unknown;
+  const disc = (await createDiscussion.run()) as Discussion;
 
-  console.log(JSON.stringify(res, undefined, 2));
+  console.log(JSON.stringify(disc, undefined, 2));
+
+  const createPoll = createComponent(CreatePoll, {
+    loomio,
+    title,
+    discussion_id: disc.id,
+  });
+
+  const poll = (await createPoll.run()) as Poll;
+
+  console.log(JSON.stringify(poll, undefined, 2));
 }
 
 if (require.main === module) {
-  main().then(
+  catchError(main).then(
     () => process.exit(),
     (error) => console.error(error)
   );
