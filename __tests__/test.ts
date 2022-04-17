@@ -1,8 +1,9 @@
 import moxios from "moxios";
 import LoomioApp from "../src/loomio.app";
-import comp from "../src/actions/create-discussion";
+import CreateDiscussion from "../src/actions/create-discussion";
 import { createApp, createComponent } from "../src/create-component";
-import { Discussion } from "../src/types";
+import { Discussion, Poll } from "../src/types";
+import CreatePoll from "../src/actions/create-poll";
 
 const title = "this is a title";
 
@@ -21,10 +22,15 @@ it("boop", async () => {
     response: {
       discussions: [
         {
+          id: 1,
           title,
         },
       ],
     },
+  });
+  moxios.stubRequest(/polls/, {
+    status: 200,
+    response: { polls: [{ id: 0 }] },
   });
 
   const loomio = createApp(LoomioApp, {
@@ -33,7 +39,7 @@ it("boop", async () => {
     password: "password",
   });
 
-  const createDiscussion = createComponent(comp, {
+  const createDiscussion = createComponent(CreateDiscussion, {
     loomio,
     description_format: "md",
     description: "this is a description",
@@ -42,5 +48,15 @@ it("boop", async () => {
 
   const disc = (await createDiscussion.run({ $: {} })) as Discussion;
 
-  expect(disc).toEqual({ title });
+  expect(disc).toEqual({ id: 1, title });
+
+  const createPoll = createComponent(CreatePoll, {
+    loomio,
+    title,
+    discussion_id: disc.id,
+  });
+
+  const poll = (await createPoll.run()) as Poll;
+
+  expect(poll).toEqual({ id: 0 });
 });
