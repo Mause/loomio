@@ -9,6 +9,7 @@ async function main() {
   const self = createComponent(comp, {
     email: config.parsed!.EMAIL,
     password: config.parsed!.PASSWORD,
+    title: "this is a test",
   });
 
   await self.run({ $: {} });
