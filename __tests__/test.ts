@@ -34,6 +34,7 @@ it("boop", async () => {
 
   const createDiscussion = createComponent(comp, {
     loomio,
+    description_format: "md",
     description: "this is a description",
     title,
   });
