@@ -43,4 +43,6 @@ jobs:
           unzip pd.zip
           mkdir -p $HOME/.config/pipedream
           echo "api_key = $PD_API_KEY" > $HOME/.config/pipedream/config
-      - run: ./pd publish .
+      - run: ../pd publish .
+        working-directory: dist
+
