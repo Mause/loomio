@@ -43,6 +43,9 @@ jobs:
           unzip pd.zip
           mkdir -p $HOME/.config/pipedream
           echo "api_key = $PD_API_KEY" > $HOME/.config/pipedream/config
+      - run: |
+          ./pd new app loomio
+          git status
       - uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: |
