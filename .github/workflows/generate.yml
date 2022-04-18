@@ -16,12 +16,15 @@ jobs:
         run: |
           curl -O https://cli.pipedream.com/linux/amd64/latest/pd.zip
           unzip pd.zip
+          rm pd.zip
           mkdir -p $HOME/.config/pipedream
           echo "api_key = $PD_API_KEY" > $HOME/.config/pipedream/config
       - uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: |
             ./pd new app loomio
+            ./pd new action create-poll
+            rm pd
           COMMIT_MESSAGE: "chore: update scaffold"
           COMMIT_NAME: "GitHub Actions"
           COMMIT_EMAIL: "example@example.com"
