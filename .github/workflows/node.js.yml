@@ -43,5 +43,14 @@ jobs:
           unzip pd.zip
           mkdir -p $HOME/.config/pipedream
           echo "api_key = $PD_API_KEY" > $HOME/.config/pipedream/config
-      - run: ./pd new app loomio
+      - uses: technote-space/create-pr-action@v2
+        with:
+          EXECUTE_COMMANDS: |
+            ./pd new app loomio
+          COMMIT_MESSAGE: "chore: update scaffold"
+          COMMIT_NAME: "GitHub Actions"
+          COMMIT_EMAIL: "example@example.com"
+          PR_BRANCH_NAME: "chore-update-scaffold-${PR_ID}"
+          PR_TITLE: "chore: update scaffold"
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - run: ./pd publish .
