@@ -43,6 +43,12 @@ jobs:
           unzip pd.zip
           mkdir -p $HOME/.config/pipedream
           echo "api_key = $PD_API_KEY" > $HOME/.config/pipedream/config
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: "yarn"
+      - run: yarn
+      - run: yarn build
       - run: ../pd publish .
         working-directory: dist
 
