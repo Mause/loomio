@@ -31,4 +31,3 @@ jobs:
           PR_BRANCH_NAME: "chore-update-scaffold-${PR_ID}"
           PR_TITLE: "chore: update scaffold"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
