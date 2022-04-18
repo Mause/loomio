@@ -31,6 +31,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+    needs: [build]
 
     steps:
       - uses: actions/checkout@v3
@@ -42,3 +43,4 @@ jobs:
           unzip pd.zip
           mkdir -p $HOME/.config/pipedream
           echo "api_key = $PD_API_KEY" > $HOME/.config/pipedream/config
+       - run: ./pd init
