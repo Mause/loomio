@@ -1,12 +1,14 @@
 import axios from "axios";
-import { defineComponent } from "ironpipe";
+import { defineAction } from "ironpipe";
 import loomio, { LoomioApp } from "../loomio.app";
 import { ResponseShape } from "../types";
 import { DateTime, Duration } from "luxon";
 
-export default defineComponent({
-  name: "loomio-create-poll",
+export default defineAction({
+  key: "loomio-create-poll",
+  name: "Create Poll",
   version: "0.0.1",
+  type: "action",
   props: {
     loomio,
     title: { type: "string" },
