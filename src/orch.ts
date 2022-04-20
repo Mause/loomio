@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import CreateDiscussion from "./actions/create-discussion";
 import CreatePoll from "./actions/create-poll";
-import { createApp, createComponent } from "./create-component";
+import { createApp, createAction, createComponent } from "./create-component";
 import LoomioApp from "./loomio.app";
 import { Discussion, Poll } from "./types";
 import { catchError } from "./utils";
@@ -19,7 +19,7 @@ async function main() {
     group_id: parseInt(parsed["GROUP_ID"]!, 10),
   });
 
-  const createDiscussion = createComponent(CreateDiscussion, {
+  const createDiscussion = createAction(CreateDiscussion, {
     loomio,
     description_format: "html",
     description: `<h1>Describe</h1>
@@ -32,7 +32,7 @@ async function main() {
 
   console.log(JSON.stringify(disc, undefined, 2));
 
-  const createPoll = createComponent(CreatePoll, {
+  const createPoll = createAction(CreatePoll, {
     loomio,
     title,
     discussion_id: disc.id,
