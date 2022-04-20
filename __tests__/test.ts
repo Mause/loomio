@@ -1,7 +1,7 @@
 import moxios from "moxios";
 import LoomioApp from "../src/loomio.app";
 import CreateDiscussion from "../src/actions/create-discussion";
-import { createApp, createComponent } from "../src/create-component";
+import { createApp, createAction } from "../src/create-component";
 import { Discussion, Poll } from "../src/types";
 import CreatePoll from "../src/actions/create-poll";
 
@@ -41,18 +41,18 @@ describe("loomio", () => {
       password: "password",
     });
 
-    const createDiscussion = createComponent(CreateDiscussion, {
+    const createDiscussion = createAction(CreateDiscussion, {
       loomio,
       description_format: "md",
       description: "this is a description",
       title,
     });
 
-    const disc = (await createDiscussion.run({ $: {} })) as Discussion;
+    const disc = (await createDiscussion.run()) as Discussion;
 
     expect(disc).toStrictEqual({ id: 1, title });
 
-    const createPoll = createComponent(CreatePoll, {
+    const createPoll = createAction(CreatePoll, {
       loomio,
       title,
       discussion_id: disc.id,

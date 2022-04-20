@@ -1,14 +1,15 @@
-import { defineComponent } from "ironpipe";
+import { defineAction } from "ironpipe";
 import axios from "axios";
-import loomio from "../loomio.app";
 import { LoomioApp } from "../loomio.app";
 import { Discussion, ResponseShape } from "../types";
 
-export default defineComponent({
-  name: "loomio-create-discussion",
+export default defineAction({
+  key: "loomio-create-discussion",
+  name: "Create Discussion",
   version: "0.0.1",
+  type: "action",
   props: {
-    loomio,
+    loomio: { type: "app", name: "loomio" },
     title: { type: "string" },
     description: { type: "string" },
     description_format: { type: "string", options: ["md", "html"] },
