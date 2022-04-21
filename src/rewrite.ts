@@ -29,7 +29,7 @@ function rewrite() {
   const args = call.getArguments();
   if (args.length !== 1) throw new Error();
 
-  const theReplacement = args.at(0);
+  const theReplacement = args[0];
 
   binexp.getRight()!.replaceWithText(theReplacement!.print());
 
