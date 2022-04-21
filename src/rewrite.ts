@@ -24,6 +24,8 @@ function rewrite() {
 
   const call = def.getInitializerIfKindOrThrow(SyntaxKind.CallExpression);
 
+  console.log(call.getExpression().print());
+
   const args = call.getArguments();
   if (args.length !== 1) throw new Error();
 
