@@ -49,6 +49,6 @@ jobs:
           cache: "yarn"
       - run: yarn
       - run: yarn build
-      - run: ./pd publish dist/src/loomio.app.js
       - run: ./pd publish dist/src/actions/create-discussion.js
       - run: ./pd publish dist/src/actions/create-poll.js
+      - run: ./pd publish dist/src/loomio.app.js
