@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "start": "ts-node ./src/orch.ts",
-    "test": "jest",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
     "build": "tsc",
     "postbuild": "ts-node ./src/rewrite.ts",
     "prepare": "husky install"
