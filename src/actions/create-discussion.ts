@@ -6,7 +6,7 @@ import { Discussion, ResponseShape } from "../types";
 export default defineAction({
   key: "loomio-create-discussion",
   name: "Create Discussion",
-  version: "0.0.1",
+  version: "0.0.2",
   type: "action",
   props: {
     loomio: { type: "app", app: "loomio" },
