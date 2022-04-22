@@ -10,7 +10,7 @@ export default defineAction({
   version: "0.0.1",
   type: "action",
   props: {
-    loomio: {"type": "app", "app": "loomio"},
+    loomio: { type: "app", app: "loomio" },
     title: { type: "string" },
     discussion_id: { type: "integer" },
   },
