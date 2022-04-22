@@ -1,6 +1,6 @@
 import axios from "axios";
 import { defineAction } from "ironpipe";
-import loomio, { LoomioApp } from "../loomio.app";
+import type { LoomioApp } from "../loomio.app";
 import { ResponseShape } from "../types";
 import { DateTime, Duration } from "luxon";
 
@@ -10,7 +10,7 @@ export default defineAction({
   version: "0.0.1",
   type: "action",
   props: {
-    loomio,
+    loomio: {"type": "app", "app": "loomio"},
     title: { type: "string" },
     discussion_id: { type: "integer" },
   },
