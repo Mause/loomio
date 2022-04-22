@@ -4,6 +4,7 @@
   "main": "index.js",
   "author": "Elliana May <me@mause.me>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "ts-node ./src/orch.ts",
     "test": "jest",
