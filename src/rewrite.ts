@@ -1,8 +1,10 @@
 import { last } from "lodash";
 import {
   CallExpression,
+  ExportDeclarationStructure,
   Project,
   SourceFile,
+  StructureKind,
   SyntaxKind,
   VariableDeclaration,
 } from "ts-morph";
@@ -27,45 +29,27 @@ function rewrite() {
 }
 
 function fixFile(sf: SourceFile) {
-  const binexp = sf
-    .getFirstDescendantOrThrow((node) => {
-      const isbin = node.getKind() === SyntaxKind.BinaryExpression;
-
-      return !!(
-        isbin &&
-        node.asKindOrThrow(SyntaxKind.BinaryExpression).getLeft().print() ==
-          "exports.default"
-      );
-    })
-    .asKindOrThrow(SyntaxKind.BinaryExpression);
-
-  const right = binexp.getRight()!;
+  const right = sf.getExportedDeclarations().get("default")![0]!;
 
   let call: CallExpression;
   if (right.getKind() == SyntaxKind.Identifier) {
-    const ref = right.asKindOrThrow(SyntaxKind.Identifier).findReferences()[0]!;
-
-    const def = ref
-      .getDefinition()
-      .getDeclarationNode()!
-      .asKindOrThrow(SyntaxKind.VariableDeclaration);
-    call = def.getInitializerIfKindOrThrow(SyntaxKind.CallExpression);
+    throw new Error();
   } else if (right.getKind() == SyntaxKind.CallExpression) {
     call = right.asKindOrThrow(SyntaxKind.CallExpression);
+  } else if (right.getKind() == SyntaxKind.VariableDeclaration) {
+    call = right
+      .asKindOrThrow(SyntaxKind.VariableDeclaration)
+      .getInitializerIfKindOrThrow(SyntaxKind.CallExpression);
   } else {
-    throw new Error();
+    throw new Error(right.getKindName());
   }
-
-  //console.log(call.getExpression().print());
 
   const args = call.getArguments();
   if (args.length !== 1) throw new Error();
 
   const theReplacement = args[0];
 
-  binexp.getRight()!.replaceWithText(theReplacement!.print());
-
-  //console.log(sf.print());
+  call.replaceWithText(theReplacement!.print());
 }
 
 rewrite();
