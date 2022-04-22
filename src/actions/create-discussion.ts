@@ -9,7 +9,7 @@ export default defineAction({
   version: "0.0.1",
   type: "action",
   props: {
-    loomio: { type: "app", name: "loomio" },
+    loomio: { type: "app" }, //, name: "loomio" },
     title: { type: "string" },
     description: { type: "string" },
     description_format: { type: "string", options: ["md", "html"] },
