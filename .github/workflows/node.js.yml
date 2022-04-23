@@ -50,6 +50,7 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: ./pd --help
-      - run: ./pd publish dist/src/actions/create-discussion.js
+      - run: ./pd update dist/src/actions/create-discussion.js
+      - run: ./pd describe
       - run: ./pd publish dist/src/actions/create-poll.js
       - run: ./pd publish dist/src/loomio.app.js
