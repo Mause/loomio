@@ -54,5 +54,5 @@ jobs:
       - run: ./pd describe loomio-create-discussion
       - run: ./pd update loomio-create-poll dist/src/actions/create-poll.js
       - run: ./pd logs loomio-create-poll
-        timeout: 30
+        timeout-minutes: 5
       - run: ./pd publish dist/src/loomio.app.js
