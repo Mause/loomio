@@ -50,9 +50,10 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: ./pd --help
-      - run: ./pd update --name loomio-create-discussion --code dist/src/actions/create-discussion.js
+      - run: ./pd list
+      - run: ./pd update loomio-create-discussion --code dist/src/actions/create-discussion.js
       - run: ./pd describe loomio-create-discussion
-      - run: ./pd update --name loomio-create-poll --code dist/src/actions/create-poll.js
+      - run: ./pd update loomio-create-poll --code dist/src/actions/create-poll.js
       - run: ./pd logs loomio-create-poll
         timeout-minutes: 5
       - run: ./pd publish dist/src/loomio.app.js
