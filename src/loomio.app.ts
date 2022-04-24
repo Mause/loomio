@@ -5,7 +5,7 @@ export function getLoomio(thing: { loomio: unknown }) {
   return (thing.loomio as LoomioApp)!;
 }
 
-const BASE_URL = "https://www.loomio.org";
+export const BASE_URL = "https://www.loomio.org";
 
 const LoomioAppDef = defineApp({
   name: "loomio",
