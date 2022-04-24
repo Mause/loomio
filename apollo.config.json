@@ -1,9 +1,8 @@
 {
   "client": {
     "service": {
-      "name": "my-service-name",
-      "localSchemaFile": "./schema.json",
-      "target": "typescript"
+      "name": "pipedream",
+      "url": "https://api.pipedream.com/graphql"
     }
   }
 }

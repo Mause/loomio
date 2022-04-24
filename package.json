@@ -9,7 +9,6 @@
     "test": "jest",
     "prebuild": "apollo client:codegen --target typescript --config apollo.config.json",
     "build": "tsc",
-    "schema": "apollo schema:download --endpoint=https://api.pipedream.com/graphql schema.json",
     "prepare": "husky install"
   },
   "dependencies": {
