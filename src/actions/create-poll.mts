@@ -1,6 +1,6 @@
 import axios from "axios";
 import { defineAction } from "ironpipe";
-import type { LoomioApp } from "../loomio.app";
+import type { LoomioApp } from "../loomio.app.mjs";
 import { ResponseShape } from "../types";
 import { DateTime, Duration } from "luxon";
 

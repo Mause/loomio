@@ -1,9 +1,9 @@
 import moxios from "moxios";
-import LoomioApp from "../src/loomio.app";
-import CreateDiscussion from "../src/actions/create-discussion";
+import LoomioApp from "../src/loomio.app.mjs";
+import CreateDiscussion from "../src/actions/create-discussion.mjs";
 import { createApp, createAction } from "../src/create-component";
 import { Discussion, Poll } from "../src/types";
-import CreatePoll from "../src/actions/create-poll";
+import CreatePoll from "../src/actions/create-poll.mjs";
 
 const title = "this is a title";
 

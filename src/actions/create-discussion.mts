@@ -1,6 +1,6 @@
 import { defineAction } from "ironpipe";
 import axios from "axios";
-import { LoomioApp } from "../loomio.app";
+import { LoomioApp } from "../loomio.app.mjs";
 import { Discussion, ResponseShape } from "../types";
 
 export default defineAction({
