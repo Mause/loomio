@@ -6,13 +6,19 @@ import { Discussion, ResponseShape } from "../types";
 export default defineAction({
   key: "loomio-create-discussion",
   name: "Create Discussion",
-  version: "0.0.1",
+  description:
+    "Creates a discussion thread in loomio in the group specified in the app",
+  version: "0.0.2",
   type: "action",
   props: {
-    loomio: { type: "app", name: "loomio" },
-    title: { type: "string" },
-    description: { type: "string" },
-    description_format: { type: "string", options: ["md", "html"] },
+    loomio: { type: "app", app: "loomio" },
+    title: { type: "string", label: "Discussion Title" },
+    description: { type: "string", label: "Discussion description" },
+    description_format: {
+      type: "string",
+      options: ["md", "html"],
+      label: "Format of the description. Only supports a subset of markdown",
+    },
   },
   methods: {},
   async run(): Promise<Discussion> {

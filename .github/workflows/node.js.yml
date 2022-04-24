@@ -49,4 +49,6 @@ jobs:
           cache: "yarn"
       - run: yarn
       - run: yarn build
-      - run: ./pd publish dist/src/actions/create-discussion.js
+      - run: ./pd update sc_Q2ie6aB --code dist/src/actions/create-discussion.js
+      - run: ./pd describe sc_Q2ie6aB
+      - run: ./pd update sc_8nijGgj --code dist/src/actions/create-poll.js

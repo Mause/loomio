@@ -4,19 +4,24 @@
   "main": "index.js",
   "author": "Elliana May <me@mause.me>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "ts-node ./src/orch.ts",
-    "test": "jest",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
     "prebuild": "apollo client:codegen --target typescript --config apollo.config.json",
     "build": "tsc",
+    "postbuild": "ts-node ./src/rewrite.ts",
     "prepare": "husky install"
   },
   "dependencies": {
     "@pipedream/pipedream": "^0.3.3",
     "@pipedream/platform": "^0.10.0",
+    "@types/lodash": "^4.14.182",
     "axios": "0.19.2",
     "ironpipe": "^0.0.8",
+    "lodash": "^4.17.21",
     "luxon": "^2.3.1",
+    "ts-morph": "^14.0.0",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
