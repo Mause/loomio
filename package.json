@@ -7,7 +7,9 @@
   "scripts": {
     "start": "ts-node ./src/orch.ts",
     "test": "jest",
+    "prebuild": "apollo client:codegen --target typescript --config apollo.config.json",
     "build": "tsc",
+    "schema": "apollo schema:download --endpoint=https://api.pipedream.com/graphql schema.json",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -25,6 +27,8 @@
     "@types/node": "^17.0.24",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
+    "@urql/core": "^2.4.4",
+    "apollo": "^2.29.0-alpha.0",
     "dotenv": "^16.0.0",
     "eslint": "^8.13.0",
     "eslint-plugin-jest": "^26.1.4",
