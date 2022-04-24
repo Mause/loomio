@@ -17,7 +17,7 @@ async function main() {
     email: parsed["EMAIL"]!,
     password: parsed["PASSWORD"]!,
     group_id: parseInt(parsed["GROUP_ID"]!, 10),
-    base_url: BASE_URL
+    base_url: BASE_URL,
   });
 
   const createDiscussion = createAction(CreateDiscussion, {
