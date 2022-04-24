@@ -19,6 +19,7 @@
     "@types/lodash": "^4.14.182",
     "axios": "0.19.2",
     "ironpipe": "^0.0.8",
+    "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
     "luxon": "^2.3.1",
     "ts-morph": "^14.0.0",
