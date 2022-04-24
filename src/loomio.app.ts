@@ -18,8 +18,8 @@ const LoomioAppDef = defineApp({
     base_url: {
       type: "string",
       description: "Base url for loomio",
-      default: BASE_URL
-    }
+      default: BASE_URL,
+    },
   },
   methods: {
     getGroupId() {
