@@ -1,6 +1,12 @@
 import axios from "axios";
 import { defineApp } from "./defineApp";
 
+export function getLoomio(thing: { loomio: unknown }) {
+  return (thing.loomio as LoomioApp)!;
+}
+
+export const BASE_URL = "https://www.loomio.org";
+
 const LoomioAppDef = defineApp({
   name: "loomio",
   version: "0.0.1",
@@ -9,13 +15,21 @@ const LoomioAppDef = defineApp({
     email: { type: "string" },
     password: { type: "string" },
     group_id: { type: "integer" },
+    base_url: {
+      type: "string",
+      description: "Base url for loomio",
+      default: BASE_URL,
+    },
   },
   methods: {
     getGroupId() {
       return this.group_id;
     },
+    getBaseUrl() {
+      return this.base_url || BASE_URL;
+    },
     async getCookie() {
-      const res = await axios.post("https://www.loomio.org/api/v1/sessions", {
+      const res = await axios.post(this.getBaseUrl() + "/api/v1/sessions", {
         user: {
           email: this.email,
           password: this.password,
