@@ -11,10 +11,11 @@
     "prebuild": "apollo client:codegen --target typescript --config apollo.config.json",
     "build": "tsc",
     "postbuild": "ts-node ./src/rewrite.ts",
+    "introspect": "ts-node ./src/exercise.ts",
+    "download": "apollo client:download-schema --config apollo.config.json",
     "prepare": "husky install"
   },
   "dependencies": {
-    "@pipedream/pipedream": "^0.3.3",
     "@pipedream/platform": "^0.10.0",
     "@types/lodash": "^4.14.182",
     "axios": "0.27.0",

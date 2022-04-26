@@ -1,7 +1,7 @@
 const url = "https://api.pipedream.com/graphql";
 
 import * as dotenv from "dotenv";
-import { createClient, CombinedError, gql } from "@urql/core";
+import { createClient, CombinedError, gql, Client } from "@urql/core";
 import type {
   CreatePipeline,
   CreatePipelineVariables,
@@ -10,6 +10,34 @@ import "isomorphic-fetch";
 import type { AddStepVariables, AddStep } from "./__generated__/AddStep";
 import type { GetActions } from "./__generated__/GetActions";
 import type { GetPipeline } from "./__generated__/GetPipeline";
+import {
+  DeleteComponent,
+  DeleteComponentVariables,
+} from "./__generated__/DeleteComponent";
+import { PipelineInput, StepInput } from "../__generated__/globalTypes";
+import { appMinimal, appMinimalVariables } from "./__generated__/appMinimal";
+
+const GetAppQue = gql`
+  query appMinimal($id: String!) {
+    app(id: $id) {
+      ...AppMinimalParts
+    }
+  }
+  fragment AppMinimalParts on App {
+    id
+    nameSlug
+    name
+    authType
+  }
+`;
+
+const DeleteComponentMut = gql`
+  mutation DeleteComponent($id: String!) {
+    deleteDeployedComponent(id: $id, ignoreHookErrors: true) {
+      errors
+    }
+  }
+`;
 
 const CreatePipelineMut = gql`
   mutation CreatePipeline($pipeline: PipelineInput!) {
@@ -73,45 +101,91 @@ const GetActionsQue = gql`
 const { parsed } = dotenv.config();
 const headers = { Authorization: "Bearer " + parsed!["PIPEDREAM_API_KEY"]! };
 
+class Pipedream {
+  private readonly client: Client;
+
+  constructor() {
+    this.client = createClient({ url, fetch, fetchOptions: { headers } });
+  }
+
+  async deleteComponent(id: string) {
+    return await this.client
+      .mutation<DeleteComponent, DeleteComponentVariables>(DeleteComponentMut, {
+        id,
+      })
+      .toPromise();
+  }
+
+  async getPipeline(id: string) {
+    return await this.client
+      .query<GetPipeline>(GetPipelineQue, { id })
+      .toPromise();
+  }
+
+  async createPipeline(pipeline: PipelineInput) {
+    return await this.client
+      .mutation<CreatePipeline, CreatePipelineVariables>(CreatePipelineMut, {
+        pipeline,
+      })
+      .toPromise();
+  }
+
+  async getActions() {
+    return await this.client.query<GetActions>(GetActionsQue).toPromise();
+  }
+
+  async getAppMinimal(id: string) {
+    return await this.client
+      .query<appMinimal, appMinimalVariables>(GetAppQue, { id })
+      .toPromise();
+  }
+
+  async addStep(deploymentId: string, index: 0, step: StepInput) {
+    return await this.client
+      .mutation<AddStep, AddStepVariables>(AddStepMut, {
+        index,
+        deploymentId,
+        step,
+      })
+      .toPromise();
+  }
+}
+
 async function main() {
-  const client = createClient({ url, fetch, fetchOptions: { headers } });
+  const client = new Pipedream();
 
-  await client
-    .query<GetPipeline>(GetPipelineQue, { id: "p_G6CRnee" })
-    .toPromise();
+  // await client.getPipeline("p_G6CRnee");
 
-  const { data } = await client
-    .mutation<CreatePipeline, CreatePipelineVariables>(CreatePipelineMut, {
-      pipeline: {},
-    })
-    .toPromise();
+  // const { data } = await client.createPipeline({});
 
-  console.log(data?.pipelineCreate?.pipeline);
+  // console.log(data?.pipelineCreate?.pipeline);
 
-  const deploymentId = data!.pipelineCreate!.pipeline!.deployments![0]!.id!;
+  // const deploymentId = data!.pipelineCreate!.pipeline!.deployments![0]!.id!;
 
-  const actions = await client.query<GetActions>(GetActionsQue).toPromise();
-  console.log(actions.error);
-  console.log(actions);
-  const pc = actions.data?.viewer!.publishedComponents;
+  console.log(await client.getAppMinimal('loomio'));
 
-  const addstep = await client
-    .mutation<AddStep, AddStepVariables>(AddStepMut, {
-      index: 0,
-      deploymentId: deploymentId,
-      step: {
-        type: "action",
-        namespace: "mauseme",
-        actionId: pc![0]!.id,
-        actionParamsJson: "{}",
-        componentKey: pc![0]!.key,
-      },
-    })
-    .toPromise();
+  const actions = await client.getActions();
+  // console.log(actions.error);
+  // console.log(actions);
+  const pc = actions.data!.viewer!.publishedComponents;
 
-  console.log(addstep.error);
+  for (const comp of pc) {
+    console.log("deleting", comp.name);
+    const newLocal = await client.deleteComponent(comp.id!);
+    console.log(
+      newLocal.error || newLocal.data?.deleteDeployedComponent?.errors
+    );
+  }
 
-  return;
+  // const addstep = await client.addStep(deploymentId, 0, {
+  //   type: "action",
+  //   namespace: "mauseme",
+  //   actionId: pc![0]!.id,
+  //   actionParamsJson: "{}",
+  //   componentKey: pc![0]!.key,
+  // });
+
+  // console.log(addstep.error);
 }
 
 main().then(
