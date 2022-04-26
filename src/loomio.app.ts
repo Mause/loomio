@@ -13,7 +13,7 @@ const LoomioAppDef = defineApp({
   type: "app",
   props: {
     email: { type: "string" },
-    password: { type: "string" },
+    password: { type: "string", secret: true },
     group_id: { type: "integer" },
     base_url: {
       type: "string",
@@ -36,9 +36,7 @@ const LoomioAppDef = defineApp({
         },
       });
 
-      const headers = res.headers as Record<string, string[]>;
-
-      return headers["set-cookie"]!.join("; ");
+      return res.headers["set-cookie"]!.join("; ");
     },
   },
 });
