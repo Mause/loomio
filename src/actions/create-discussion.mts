@@ -1,7 +1,7 @@
 import { defineAction } from "ironpipe";
 import axios from "axios";
 import { Discussion, ResponseShape } from "../types";
-import { getLoomio } from "../loomio.app";
+import { getLoomio } from "../loomio.app.mjs";
 
 export default defineAction({
   key: "loomio-create-discussion",

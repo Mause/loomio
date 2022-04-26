@@ -21,7 +21,12 @@ function rewrite() {
   for (const sf of dir.getDescendantSourceFiles()) {
     console.time(sf.getBaseName());
     if (ALLOW_LIST.has(sf.getBaseNameWithoutExtension())) {
-      fixFile(sf);
+      try {
+        fixFile(sf);
+      } catch (e) {
+        console.log("failed to rewrite", sf.getBaseName());
+        throw e;
+      }
       sf.saveSync();
     }
     console.timeEnd(sf.getBaseName());

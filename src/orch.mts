@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
-import CreateDiscussion from "./actions/create-discussion";
-import CreatePoll from "./actions/create-poll";
+import CreateDiscussion from "./actions/create-discussion.mjs";
+import CreatePoll from "./actions/create-poll.mjs";
 import { createApp, createAction, createComponent } from "./create-component";
-import LoomioApp, { BASE_URL } from "./loomio.app";
+import LoomioApp, { BASE_URL } from "./loomio.app.mjs";
 import { Discussion, Poll } from "./types";
 import { catchError } from "./utils";
 
