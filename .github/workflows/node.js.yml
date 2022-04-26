@@ -49,14 +49,6 @@ jobs:
           cache: "yarn"
       - run: yarn
       - run: yarn build
-      - run: ./pd --help
-      - run: ./pd list components
-      - run: ./pd list streams
-      - run: ./pd list published
-      - run: ./pd list registry
-      - run: ./pd update loomio-create-discussion --code dist/src/actions/create-discussion.js
-      - run: ./pd describe loomio-create-discussion
-      - run: ./pd update loomio-create-poll --code dist/src/actions/create-poll.js
-      - run: ./pd logs loomio-create-poll
-        timeout-minutes: 5
-      - run: ./pd publish dist/src/loomio.app.js
+      - run: ./pd update sc_Q2ie6aB --code dist/src/actions/create-discussion.js
+      - run: ./pd describe sc_Q2ie6aB
+      - run: ./pd update sc_8nijGgj --code dist/src/actions/create-poll.js

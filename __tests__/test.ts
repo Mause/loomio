@@ -1,5 +1,5 @@
 import moxios from "moxios";
-import LoomioApp from "../src/loomio.app.mjs";
+import LoomioApp, { BASE_URL } from "../src/loomio.app.mjs";
 import CreateDiscussion from "../src/actions/create-discussion.mjs";
 import { createApp, createAction } from "../src/create-component";
 import { Discussion, Poll } from "../src/types";
@@ -39,6 +39,7 @@ describe("loomio", () => {
       email: "dummy@example.com",
       group_id: 1,
       password: "password",
+      base_url: BASE_URL,
     });
 
     const createDiscussion = createAction(CreateDiscussion, {

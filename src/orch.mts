@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 import CreateDiscussion from "./actions/create-discussion.mjs";
 import CreatePoll from "./actions/create-poll.mjs";
-import { createApp, createAction } from "./create-component";
-import LoomioApp from "./loomio.app.mjs";
+import { createApp, createAction, createComponent } from "./create-component";
+import LoomioApp, { BASE_URL } from "./loomio.app.mjs";
 import { Discussion, Poll } from "./types";
 import { catchError } from "./utils";
 
@@ -17,6 +17,7 @@ async function main() {
     email: parsed["EMAIL"]!,
     password: parsed["PASSWORD"]!,
     group_id: parseInt(parsed["GROUP_ID"]!, 10),
+    base_url: BASE_URL,
   });
 
   const createDiscussion = createAction(CreateDiscussion, {

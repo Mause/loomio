@@ -1,6 +1,6 @@
 import axios from "axios";
 import { defineAction } from "ironpipe";
-import type { LoomioApp } from "../loomio.app.mjs";
+import { getLoomio } from "../loomio.app.mjs";
 import { ResponseShape } from "../types";
 import { DateTime, Duration } from "luxon";
 
@@ -15,7 +15,7 @@ export default defineAction({
     discussion_id: { type: "integer" },
   },
   async run() {
-    const loomio = (this.loomio as LoomioApp)!;
+    const loomio = getLoomio(this);
 
     const cookie = await loomio.getCookie();
 
@@ -24,7 +24,7 @@ export default defineAction({
       .toISO();
 
     const res = await axios.post<ResponseShape>(
-      "https://www.loomio.org/api/v1/polls",
+      loomio.getBaseUrl() + "/api/v1/polls",
       {
         poll: {
           title: this.title,

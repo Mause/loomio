@@ -1,7 +1,7 @@
 import { defineAction } from "ironpipe";
 import axios from "axios";
-import { LoomioApp } from "../loomio.app.mjs";
 import { Discussion, ResponseShape } from "../types";
+import { getLoomio } from "../loomio.app.mjs";
 
 export default defineAction({
   key: "loomio-create-discussion",
@@ -22,12 +22,12 @@ export default defineAction({
   },
   methods: {},
   async run(): Promise<Discussion> {
-    const loomio = (this.loomio as LoomioApp)!;
+    const loomio = getLoomio(this);
     const cookie = await loomio.getCookie();
     const group_id = loomio.getGroupId();
 
     const res = await axios.post<ResponseShape>(
-      "https://www.loomio.org/api/v1/discussions",
+      loomio.getBaseUrl() + "/api/v1/discussions",
       {
         discussion: {
           title: this.title,
