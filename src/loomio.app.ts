@@ -13,7 +13,7 @@ const LoomioAppDef = defineApp({
   type: "app",
   props: {
     email: { type: "string" },
-    password: { type: "string" },
+    password: { type: "string", secret: true },
     group_id: { type: "integer" },
     base_url: {
       type: "string",
