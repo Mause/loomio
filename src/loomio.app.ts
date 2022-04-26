@@ -36,9 +36,7 @@ const LoomioAppDef = defineApp({
         },
       });
 
-      const headers = res.headers as Record<string, string[]>;
-
-      return headers["set-cookie"]!.join("; ");
+      return res.headers["set-cookie"]!.join("; ");
     },
   },
 });
