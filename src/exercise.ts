@@ -162,7 +162,7 @@ async function main() {
 
   // const deploymentId = data!.pipelineCreate!.pipeline!.deployments![0]!.id!;
 
-  console.log(await client.getAppMinimal('loomio'));
+  console.log(await client.getAppMinimal("loomio"));
 
   const actions = await client.getActions();
   // console.log(actions.error);
