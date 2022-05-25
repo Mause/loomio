@@ -3249,10 +3249,10 @@ io-ts@^2.0.0:
   resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.16.tgz#597dffa03db1913fc318c9c6df6931cb4ed808b2"
   integrity sha512-y5TTSa6VP6le0hhmIyN0dqEXkrZeJLeC5KApJq6VLci3UEKF80lZ+KuoUs02RhBxNWlrqSNxzfI7otLX1Euv8Q==
 
-ironpipe@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/ironpipe/-/ironpipe-0.0.8.tgz#42bf7841c70d9bc54317840f034290c8b0321861"
-  integrity sha512-/dA0m3XtFkPBSDYiDon9ijHbMCCVLfHgq7QC7Ck9gOnjEW9f2f1gkgaKuia5t5M6u3llwNuU6YtgQ3f/E7FLLQ==
+ironpipe@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/ironpipe/-/ironpipe-0.0.9.tgz#02e9aa81ca4b1cdb71248a39bde5ad655a0d32af"
+  integrity sha512-OB0mVnFuU9yYnH9y+TMNm8lhp9ZSeS/ezh9ZssP93JDN/tNauba9dMWUI/Zv5/9F7apT79VvbHHbkhLbcrrj3Q==
 
 is-arrayish@^0.2.1:
   version "0.2.1"

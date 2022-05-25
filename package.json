@@ -17,7 +17,7 @@
     "@pipedream/platform": "^0.10.0",
     "@types/lodash": "^4.14.182",
     "axios": "0.27.2",
-    "ironpipe": "^0.0.8",
+    "ironpipe": "^0.0.9",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
     "luxon": "^2.3.1",
