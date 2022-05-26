@@ -999,10 +999,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@ts-morph/common@~0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@ts-morph/common/-/common-0.13.0.tgz#77dea1565baaf002d1bc2c20e05d1fb3349008a9"
-  integrity sha512-fEJ6j7Cu8yiWjA4UmybOBH9Efgb/64ZTWuvCF4KysGu4xz8ettfyaqFt8WZ1btCxXsGZJjZ2/3svOF6rL+UFdQ==
+"@ts-morph/common@~0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@ts-morph/common/-/common-0.15.0.tgz#aece752746fc0d779d2acfaece95fb2c23327ba5"
+  integrity sha512-QefRbadcwfBnd3HWrltpjRJprHgeKfQsnbyGbRF8pEjMqISAljJwq4wfRETxxojsmN4GWuJv3PWG+W7kBIHMMw==
   dependencies:
     fast-glob "^3.2.11"
     minimatch "^5.0.1"
@@ -3249,10 +3249,10 @@ io-ts@^2.0.0:
   resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.16.tgz#597dffa03db1913fc318c9c6df6931cb4ed808b2"
   integrity sha512-y5TTSa6VP6le0hhmIyN0dqEXkrZeJLeC5KApJq6VLci3UEKF80lZ+KuoUs02RhBxNWlrqSNxzfI7otLX1Euv8Q==
 
-ironpipe@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/ironpipe/-/ironpipe-0.0.8.tgz#42bf7841c70d9bc54317840f034290c8b0321861"
-  integrity sha512-/dA0m3XtFkPBSDYiDon9ijHbMCCVLfHgq7QC7Ck9gOnjEW9f2f1gkgaKuia5t5M6u3llwNuU6YtgQ3f/E7FLLQ==
+ironpipe@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/ironpipe/-/ironpipe-0.0.9.tgz#02e9aa81ca4b1cdb71248a39bde5ad655a0d32af"
+  integrity sha512-OB0mVnFuU9yYnH9y+TMNm8lhp9ZSeS/ezh9ZssP93JDN/tNauba9dMWUI/Zv5/9F7apT79VvbHHbkhLbcrrj3Q==
 
 is-arrayish@^0.2.1:
   version "0.2.1"
@@ -5331,12 +5331,12 @@ ts-jest@^28.0.0:
     semver "7.x"
     yargs-parser "^20.x"
 
-ts-morph@^14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-14.0.0.tgz#6bffb7e4584cf6a9aebce2066bf4258e1d03f9fa"
-  integrity sha512-tO8YQ1dP41fw8GVmeQAdNsD8roZi1JMqB7YwZrqU856DvmG5/710e41q2XauzTYrygH9XmMryaFeLo+kdCziyA==
+ts-morph@^15.0.0:
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-15.0.0.tgz#927a85d22909b95fa81e399c94fea655d98be514"
+  integrity sha512-OZkg0TI1h6FVe8DZXyBo6p7NfCN9EZZkkA736f243KzQ3cypYWtaLc9eyNn/JH/fWYfQ4d6wIA4oM0vElRTGcQ==
   dependencies:
-    "@ts-morph/common" "~0.13.0"
+    "@ts-morph/common" "~0.15.0"
     code-block-writer "^11.0.0"
 
 ts-node@^10.7.0:
