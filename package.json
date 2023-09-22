@@ -41,7 +41,7 @@
     "moxios": "^0.4.0",
     "prettier": "^3.0.0",
     "ts-jest": "^29.0.0",
-    "ts-morph": "^19.0.0",
+    "ts-morph": "^20.0.0",
     "ts-node": "^10.7.0"
   },
   "lint-staged": {
