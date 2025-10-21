@@ -46,7 +46,7 @@ jobs:
           echo "api_key = $PD_API_KEY" > $HOME/.config/pipedream/config
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 22
           cache: "yarn"
       - run: yarn
       - run: yarn build
